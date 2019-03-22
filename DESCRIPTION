@@ -1,11 +1,14 @@
 Package: jhcutils
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Utility Functions for Joshua H. Cook
+Version: 0.0.0.9000
+Author: person(c("Joshua", "H"), "Cook", email = "joshuacook0023@gmail.com",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0001-9815-6879"))
+Description: These are a bunch of functions that I find myself declaring and
+    rewriting in a many scripts and analyses
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    testthat

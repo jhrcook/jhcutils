@@ -2,13 +2,14 @@ Package: jhcutils
 Type: Package
 Title: Utility Functions for Joshua H. Cook
 Version: 0.0.0.9000
-Author: person(c("Joshua", "H"), "Cook", email = "joshuacook0023@gmail.com",
+Authors@R: person(c("Joshua", "H"), "Cook", email = "joshuacook0023@gmail.com",
     role = c("aut", "cre"),
     comment = c(ORCID = "0000-0001-9815-6879"))
 Description: These are a bunch of functions that I find myself declaring and
-    rewriting in a many scripts and analyses
+    rewriting in a many scripts and analyses.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat
+RoxygenNote: 6.1.1

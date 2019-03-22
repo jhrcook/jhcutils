@@ -10,7 +10,7 @@ These are a bunch of functions that I find myself declaring and rewriting in a m
 Installation
 ------------
 
-You can install the released version of jhcutils from [CRAN](https://CRAN.R-project.org) with:
+You can install 'jhcutils' with:
 
 ``` r
 devtools::install_github("jhrcook/jhcutils")

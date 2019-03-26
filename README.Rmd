@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# jhcutils
+# jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Travis build status](https://travis-ci.org/jhrcook/jhcutils.svg?branch=master)](https://travis-ci.org/jhrcook/jhcutils)
@@ -28,3 +28,5 @@ You can install 'jhcutils' with:
 ```{r install, eval = FALSE}
 devtools::install_github("jhrcook/jhcutils")
 ```
+
+Full documentation: ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html)

@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(jhcutils)
 ```
 # jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
@@ -30,3 +31,36 @@ devtools::install_github("jhrcook/jhcutils")
 ```
 
 Full documentation: ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html)
+
+---
+
+## General Use
+
+**n_unique** - return the number of unique values in a vector.
+
+```{r nunique}
+a <- c(1, 2, 2, 3, 4, 5)
+n_unique(a)
+b <- list(c(1, 2, 3, 4), c(1, 2, 3, 4, 5))
+n_unique(b)
+n_unique(b, to_unlist = TRUE)
+```
+
+**unique_na** - return the unique values in a vector, omitting `NA`.
+
+```{r uniquena}
+a <- c(1, 2, 3, NA, 3)
+unique_na(a)
+b <- list(c(1, 2, 3, NA), c(1, 2, NA, 5))
+unique_na(b)
+```
+
+
+## Tidygraph
+
+**recursive_graph_join** - recursively join a list of tidygraph objects
+
+```{r recursivegraphjoin}
+# TODO
+```
+

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • jhcutils</title>
+<title>Recursively join a list of tidygraphs — recursive_graph_join • jhcutils</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -37,7 +37,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Recursively join a list of tidygraphs — recursive_graph_join" />
+
+<meta property="og:description" content="Joins the graphs into a single graph. This recursively implementes
+tidygraph::graph_join()" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -57,7 +60,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -104,54 +107,56 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Recursively join a list of tidygraphs</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jhrcook/jhcutils/blob/master/R/recursive_graph_join.R'><code>R/recursive_graph_join.R</code></a></small>
+    <div class="hidden name"><code>recursive_graph_join.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Joins the graphs into a single graph. This recursively implementes
+<code><a href='https://www.rdocumentation.org/packages/tidygraph/topics/graph_join'>tidygraph::graph_join()</a></code></p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="n_unique.html">n_unique()</a></code> </p>
-        </td>
-        <td><p>Number of unique values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="recursive_graph_join.html">recursive_graph_join()</a></code> </p>
-        </td>
-        <td><p>Recursively join a list of tidygraphs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="unique_na.html">unique_na()</a></code> </p>
-        </td>
-        <td><p>Unique and omit <code>NA</code></p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>recursive_graph_join</span>(<span class='no'>grs</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>grs</th>
+      <td><p>a list of tidygraph objects</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>a single tidygraph object</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>tidygraph</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘tidygraph’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter</span></div><div class='input'># TODO
+
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

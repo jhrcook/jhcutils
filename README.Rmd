@@ -53,6 +53,7 @@ a <- c(1, 2, 3, NA, 3)
 unique_na(a)
 b <- list(c(1, 2, 3, NA), c(1, 2, NA, 5))
 unique_na(b)
+unique_na(b, to_unlist = TRUE)
 ```
 
 

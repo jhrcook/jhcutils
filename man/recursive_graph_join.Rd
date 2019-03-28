@@ -4,10 +4,12 @@
 \alias{recursive_graph_join}
 \title{Recursively join a list of tidygraphs}
 \usage{
-recursive_graph_join(grs)
+recursive_graph_join(grs, by = "name")
 }
 \arguments{
 \item{grs}{a list of tidygraph objects}
+
+\item{by}{what to group by (passed to \code{tidygraph::graph_join()})}
 }
 \value{
 a single tidygraph object
@@ -18,6 +20,5 @@ Joins the graphs into a single graph. This recursively implementes
 }
 \examples{
 library(tidygraph)
-# TODO
 
 }

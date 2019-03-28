@@ -121,7 +121,7 @@ tidygraph::graph_join()" />
     
     </div>
 
-    <pre class="usage"><span class='fu'>recursive_graph_join</span>(<span class='no'>grs</span>)</pre>
+    <pre class="usage"><span class='fu'>recursive_graph_join</span>(<span class='no'>grs</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"name"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -129,6 +129,10 @@ tidygraph::graph_join()" />
     <tr>
       <th>grs</th>
       <td><p>a list of tidygraph objects</p></td>
+    </tr>
+    <tr>
+      <th>by</th>
+      <td><p>what to group by (passed to <code><a href='https://www.rdocumentation.org/packages/tidygraph/topics/graph_join'>tidygraph::graph_join()</a></code>)</p></td>
     </tr>
     </table>
     
@@ -143,8 +147,7 @@ tidygraph::graph_join()" />
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:stats’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter</span></div><div class='input'># TODO
-
+#&gt; <span class='message'>    filter</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

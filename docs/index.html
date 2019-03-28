@@ -87,7 +87,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install ‘jhcutils’ with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jhrcook/jhcutils"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jhrcook/jhcutils"</span>)</code></pre></div>
 <p>Full documentation: <a href="https://jhrcook.github.io/jhcutils/index.html">‘pkgdown site’</a></p>
 <hr>
 </div>
@@ -95,31 +95,33 @@
 <h2 class="hasAnchor">
 <a href="#general-use" class="anchor"></a>General Use</h2>
 <p><strong>n_unique</strong> - return the number of unique values in a vector.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(a)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] 5</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] 2</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; [1] 5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+<span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(a)
+<span class="co">#&gt; [1] 5</span>
+b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))
+<span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b)
+<span class="co">#&gt; [1] 2</span>
+<span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; [1] 5</span></code></pre></div>
 <p><strong>unique_na</strong> - return the unique values in a vector, omitting <code>NA</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(a)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [1] 1 2 3</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [1]  1  2  3 NA</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [[2]]</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; [1]  1  2 NA  5</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">3</span>)
+<span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(a)
+<span class="co">#&gt; [1] 1 2 3</span>
+b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">5</span>))
+<span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b)
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1]  1  2  3 NA</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt; [1]  1  2 NA  5</span>
+<span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; [1] 1 2 3 5</span></code></pre></div>
 </div>
 <div id="tidygraph" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidygraph" class="anchor"></a>Tidygraph</h2>
 <p><strong>recursive_graph_join</strong> - recursively join a list of tidygraph objects</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># </span><span class="al">TODO</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">TODO</span></code></pre></div>
 </div>
 </div>
   </div>

@@ -9,7 +9,11 @@
 #' @return a single tidygraph object
 #'
 #' @examples
-#' library(tidygraph)
+#' gr_list <- purrr::map(c(10, 20, 30), quick_forestfire)
+#' gr <- recursive_graph_join(gr_list)
+#' gr
+#'
+#' plot(gr)
 #'
 recursive_graph_join <- function(grs, by = "name") {
     if (length(grs) == 1) {

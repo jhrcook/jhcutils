@@ -20,8 +20,8 @@ Full documentation: ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.ht
 
 ------------------------------------------------------------------------
 
-General Use
------------
+General Utilities
+-----------------
 
 **n\_unique** - return the number of unique values in a vector.
 
@@ -56,8 +56,116 @@ unique_na(b, to_unlist = TRUE)
 Tidygraph
 ---------
 
+**quick\_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
+
+``` r
+forest_gr <- quick_forestfire(10)
+forest_gr
+#> # A tbl_graph: 10 nodes and 23 edges
+#> #
+#> # An undirected simple graph with 1 component
+#> #
+#> # Node Data: 10 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 A    
+#> 2 B    
+#> 3 C    
+#> 4 D    
+#> 5 E    
+#> 6 F    
+#> # … with 4 more rows
+#> #
+#> # Edge Data: 23 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     1     3
+#> 3     2     3
+#> # … with 20 more rows
+my_plot_fxn(forest_gr) +
+    labs(title = "Example of a quick Forest Fire graph model")
+```
+
+<img src="man/figures/README-forestfire-1.png" width="100%" />
+
+**quick\_barabasi** - wrapper around `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
+
+``` r
+barabasi_gr <- quick_barabasi(10)
+barabasi_gr
+#> # A tbl_graph: 10 nodes and 9 edges
+#> #
+#> # An undirected simple graph with 1 component
+#> #
+#> # Node Data: 10 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 A    
+#> 2 B    
+#> 3 C    
+#> 4 D    
+#> 5 E    
+#> 6 F    
+#> # … with 4 more rows
+#> #
+#> # Edge Data: 9 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     1     3
+#> 3     2     4
+#> # … with 6 more rows
+my_plot_fxn(barabasi_gr) +
+    labs(title = "Example of a quick Barabasi-Albert graph")
+```
+
+<img src="man/figures/README-barbasi-1.png" width="100%" />
+
+**quick\_graph** - randomly selects one of the above random graphs
+
+``` r
+quick_gr <- quick_graph(10)
+#> using forestfire
+```
+
 **recursive\_graph\_join** - recursively join a list of tidygraph objects
 
 ``` r
-# TODO
+gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
+gr <- recursive_graph_join(gr_list)
+gr
+#> # A tbl_graph: 15 nodes and 114 edges
+#> #
+#> # A directed acyclic multigraph with 1 component
+#> #
+#> # Node Data: 15 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 A    
+#> 2 B    
+#> 3 C    
+#> 4 D    
+#> 5 E    
+#> 6 F    
+#> # … with 9 more rows
+#> #
+#> # Edge Data: 114 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     2     3
+#> 3     1     3
+#> # … with 111 more rows
+my_plot_fxn(gr) +
+    labs(title = "Example of joining 3 forest fire graphs")
 ```
+
+<img src="man/figures/README-recursivegraphjoin-1.png" width="100%" />
+
+------------------------------------------------------------------------
+
+Additions
+---------
+
+If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).

@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 library(jhcutils)
+set.seed(0)
 ```
 # jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
@@ -34,7 +35,7 @@ Full documentation: ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.ht
 
 ---
 
-## General Use
+## General Utilities
 
 **n_unique** - return the number of unique values in a vector.
 
@@ -59,9 +60,57 @@ unique_na(b, to_unlist = TRUE)
 
 ## Tidygraph
 
+```{r myplot, include=FALSE}
+library(ggraph)
+my_plot_fxn <- function(gr) {
+    g <- ggraph(gr, layout = "nicely") +
+        geom_edge_link(color = "grey30", width = 0.5) +
+        geom_node_point(color = "dodgerblue", size = 7) +
+        geom_node_text(aes(label = name), size = 4, color = "black") +
+        theme_void()
+    return(g)
+}
+```
+
+
+**quick_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
+
+```{r forestfire}
+forest_gr <- quick_forestfire(10)
+forest_gr
+my_plot_fxn(forest_gr) +
+    labs(title = "Example of a quick Forest Fire graph model")
+```
+
+**quick_barabasi** - wrapper around `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
+
+```{r barbasi}
+barabasi_gr <- quick_barabasi(10)
+barabasi_gr
+my_plot_fxn(barabasi_gr) +
+    labs(title = "Example of a quick Barabasi-Albert graph")
+```
+
+**quick_graph** - randomly selects one of the above random graphs
+
+```{r quickgraph}
+quick_gr <- quick_graph(10)
+```
+
+
+
 **recursive_graph_join** - recursively join a list of tidygraph objects
 
 ```{r recursivegraphjoin}
-# TODO
+gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
+gr <- recursive_graph_join(gr_list)
+gr
+my_plot_fxn(gr) +
+    labs(title = "Example of joining 3 forest fire graphs")
 ```
 
+---
+
+## Additions
+
+If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).

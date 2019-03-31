@@ -12,13 +12,13 @@
 #' @name random_graph
 #'
 #' @examples
-#' forrest_gr <- quick_forrest(20)
-#' forrest_gr
-#' plot(gr)
+#' forest_gr <- quick_forestfire(20)
+#' forest_gr
+#' plot(forest_gr)
 #'
 #' barabasi_gr <- quick_barabasi(20)
 #' barabasi_gr
-#' plot(gr)
+#' plot(barabasi_gr)
 #'
 #' @importFrom tidygraph %N>%
 #' @importFrom rlang !!

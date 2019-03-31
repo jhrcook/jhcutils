@@ -20,4 +20,5 @@ Imports:
     tidygraph,
     magrittr,
     gtools,
-    rlang
+    rlang,
+    purrr

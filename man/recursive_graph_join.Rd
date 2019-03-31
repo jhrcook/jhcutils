@@ -19,6 +19,10 @@ Joins the graphs into a single graph. This recursively implementes
 \code{tidygraph::graph_join()}
 }
 \examples{
-library(tidygraph)
+gr_list <- purrr::map(c(10, 20, 30), quick_forestfire)
+gr <- recursive_graph_join(gr_list)
+gr
+
+plot(gr)
 
 }

@@ -57,6 +57,14 @@ unique_na(b)
 unique_na(b, to_unlist = TRUE)
 ```
 
+**minmax** - set limits on a vector of numeric values.
+
+```{r minmax}
+c <- sample(-100:100, 20)
+c
+minmax(c, -10, 10)
+```
+
 
 ## Tidygraph
 
@@ -91,15 +99,13 @@ my_plot_fxn(barabasi_gr) +
     labs(title = "Example of a quick Barabasi-Albert graph")
 ```
 
-**quick_graph** - randomly selects one of the above random graphs
+**quick_graph** - randomly selects one of the above random graphs.
 
 ```{r quickgraph}
 quick_gr <- quick_graph(10)
 ```
 
-
-
-**recursive_graph_join** - recursively join a list of tidygraph objects
+**recursive_graph_join** - recursively join a list of tidygraph objects.
 
 ```{r recursivegraphjoin}
 gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)

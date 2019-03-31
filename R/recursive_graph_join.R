@@ -15,6 +15,7 @@
 #'
 #' plot(gr)
 #'
+#' @export recursive_graph_join
 recursive_graph_join <- function(grs, by = "name") {
     if (length(grs) == 1) {
         # base case

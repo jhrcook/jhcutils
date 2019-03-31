@@ -27,3 +27,13 @@ a tridygraph object with named nodes
 These are light-weight wrappers around 'tidygraph' functions to
 create random graphs. They return graphs with named nodes.
 }
+\examples{
+forest_gr <- quick_forestfire(20)
+forest_gr
+plot(forest_gr)
+
+barabasi_gr <- quick_barabasi(20)
+barabasi_gr
+plot(barabasi_gr)
+
+}

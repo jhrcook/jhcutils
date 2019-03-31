@@ -91,9 +91,9 @@
 <p>Full documentation: <a href="https://jhrcook.github.io/jhcutils/index.html">‘pkgdown site’</a></p>
 <hr>
 </div>
-<div id="general-use" class="section level2">
+<div id="general-utilities" class="section level2">
 <h2 class="hasAnchor">
-<a href="#general-use" class="anchor"></a>General Use</h2>
+<a href="#general-utilities" class="anchor"></a>General Utilities</h2>
 <p><strong>n_unique</strong> - return the number of unique values in a vector.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
 <span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(a)
@@ -120,8 +120,100 @@ b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumenta
 <div id="tidygraph" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidygraph" class="anchor"></a>Tidygraph</h2>
+<p><strong>quick_forestfire</strong> - wrapper around <code><a href="https://www.rdocumentation.org/packages/tidygraph/topics/evolution_games">tidygraph::play_forestfire</a></code> except that it will return a tidygraph object with the node attribute <code>"name"</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">forest_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">10</span>)
+forest_gr
+<span class="co">#&gt; # A tbl_graph: 10 nodes and 23 edges</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # An undirected simple graph with 1 component</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Node Data: 10 x 1 (active)</span>
+<span class="co">#&gt;   name </span>
+<span class="co">#&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 A    </span>
+<span class="co">#&gt; 2 B    </span>
+<span class="co">#&gt; 3 C    </span>
+<span class="co">#&gt; 4 D    </span>
+<span class="co">#&gt; 5 E    </span>
+<span class="co">#&gt; 6 F    </span>
+<span class="co">#&gt; # … with 4 more rows</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Edge Data: 23 x 2</span>
+<span class="co">#&gt;    from    to</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1     1     2</span>
+<span class="co">#&gt; 2     1     3</span>
+<span class="co">#&gt; 3     2     3</span>
+<span class="co">#&gt; # … with 20 more rows</span>
+<span class="kw">my_plot_fxn</span>(forest_gr) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of a quick Forest Fire graph model"</span>)</code></pre></div>
+<p><img src="reference/figures/README-forestfire-1.png" width="100%"></p>
+<p><strong>quick_barabasi</strong> - wrapper around <code><a href="https://www.rdocumentation.org/packages/tidygraph/topics/evolution_games">tidygraph::play_barabasi_albert</a></code> except that it will return a tidygraph object with the node attribute <code>"name"</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barabasi_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_barabasi</a></span>(<span class="dv">10</span>)
+barabasi_gr
+<span class="co">#&gt; # A tbl_graph: 10 nodes and 9 edges</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # An undirected simple graph with 1 component</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Node Data: 10 x 1 (active)</span>
+<span class="co">#&gt;   name </span>
+<span class="co">#&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 A    </span>
+<span class="co">#&gt; 2 B    </span>
+<span class="co">#&gt; 3 C    </span>
+<span class="co">#&gt; 4 D    </span>
+<span class="co">#&gt; 5 E    </span>
+<span class="co">#&gt; 6 F    </span>
+<span class="co">#&gt; # … with 4 more rows</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Edge Data: 9 x 2</span>
+<span class="co">#&gt;    from    to</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1     1     2</span>
+<span class="co">#&gt; 2     1     3</span>
+<span class="co">#&gt; 3     2     4</span>
+<span class="co">#&gt; # … with 6 more rows</span>
+<span class="kw">my_plot_fxn</span>(barabasi_gr) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of a quick Barabasi-Albert graph"</span>)</code></pre></div>
+<p><img src="reference/figures/README-barbasi-1.png" width="100%"></p>
+<p><strong>quick_graph</strong> - randomly selects one of the above random graphs</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quick_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_graph</a></span>(<span class="dv">10</span>)
+<span class="co">#&gt; using forestfire</span></code></pre></div>
 <p><strong>recursive_graph_join</strong> - recursively join a list of tidygraph objects</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span><span class="al">TODO</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gr_list &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>), quick_forestfire)
+gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/recursive_graph_join.html">recursive_graph_join</a></span>(gr_list)
+gr
+<span class="co">#&gt; # A tbl_graph: 15 nodes and 114 edges</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # A directed acyclic multigraph with 1 component</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Node Data: 15 x 1 (active)</span>
+<span class="co">#&gt;   name </span>
+<span class="co">#&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 A    </span>
+<span class="co">#&gt; 2 B    </span>
+<span class="co">#&gt; 3 C    </span>
+<span class="co">#&gt; 4 D    </span>
+<span class="co">#&gt; 5 E    </span>
+<span class="co">#&gt; 6 F    </span>
+<span class="co">#&gt; # … with 9 more rows</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Edge Data: 114 x 2</span>
+<span class="co">#&gt;    from    to</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1     1     2</span>
+<span class="co">#&gt; 2     2     3</span>
+<span class="co">#&gt; 3     1     3</span>
+<span class="co">#&gt; # … with 111 more rows</span>
+<span class="kw">my_plot_fxn</span>(gr) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of joining 3 forest fire graphs"</span>)</code></pre></div>
+<p><img src="reference/figures/README-recursivegraphjoin-1.png" width="100%"></p>
+<hr>
+</div>
+<div id="additions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#additions" class="anchor"></a>Additions</h2>
+<p>If you have any recommended additions, please open an <a href="https://github.com/jhrcook/jhcutils/issues">issue</a>.</p>
 </div>
 </div>
   </div>
@@ -155,8 +247,8 @@ b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumenta
 <ul class="list-unstyled">
 <li><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
 <li><a href="https://travis-ci.org/jhrcook/jhcutils"><img src="https://travis-ci.org/jhrcook/jhcutils.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://codecov.io/github/jhrcook/jhcutils?branch=master"><img src="https://codecov.io/gh/jhrcook/jhcutils/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://ci.appveyor.com/project/jhrcook/jhcutils"><img src="https://ci.appveyor.com/api/projects/status/github/jhrcook/jhcutils?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://codecov.io/github/jhrcook/jhcutils?branch=master"><img src="https://codecov.io/gh/jhrcook/jhcutils/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
 </ul>
 </div>
 </div>

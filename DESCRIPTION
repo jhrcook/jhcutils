@@ -21,4 +21,6 @@ Imports:
     magrittr,
     gtools,
     rlang,
-    purrr
+    purrr,
+    igraph,
+    dplyr

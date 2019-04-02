@@ -1,0 +1,19 @@
+reference:
+- title: general utilities
+  contents:
+  - '`minmax`'
+  - '`n_perm`'
+  - '`n_unique`'
+  - '`unique_na`'
+
+- title: for 'tidygraph'
+  contents:
+  - '`filter_component_size`'
+  - '`recursive_graph_join`'
+  - '`quick_forestfire`'
+  - '`quick_barabasi`'
+  - '`quick_graph`'
+
+- title: internal
+  contents:
+  - '`prep_node_names`'

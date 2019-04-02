@@ -115,6 +115,16 @@ my_plot_fxn(gr) +
     labs(title = "Example of joining 3 forest fire graphs")
 ```
 
+**filter_component_size** - filter the components of a tidygraph object by their individual number of nodes (order).
+
+```{r filtercompsize}
+gr <- tidygraph::bind_graphs(quick_forestfire(4, name = LETTERS),
+                             quick_forestfire(6, name = letters))
+igraph::count_components(gr)
+igraph::count_components(filter_component_size(gr, min_size = 5))
+igraph::count_components(filter_component_size(gr, max_size = 5))
+```
+
 ---
 
 ## Additions

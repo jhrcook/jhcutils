@@ -175,6 +175,19 @@ my_plot_fxn(gr) +
 
 <img src="man/figures/README-recursivegraphjoin-1.png" width="100%" />
 
+**filter\_component\_size** - filter the components of a tidygraph object by their individual number of nodes (order).
+
+``` r
+gr <- tidygraph::bind_graphs(quick_forestfire(4, name = LETTERS),
+                             quick_forestfire(6, name = letters))
+igraph::count_components(gr)
+#> [1] 2
+igraph::count_components(filter_component_size(gr, min_size = 5))
+#> [1] 1
+igraph::count_components(filter_component_size(gr, max_size = 5))
+#> [1] 1
+```
+
 ------------------------------------------------------------------------
 
 Additions

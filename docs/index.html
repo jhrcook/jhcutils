@@ -216,6 +216,15 @@ gr
 <span class="kw">my_plot_fxn</span>(gr) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of joining 3 forest fire graphs"</span>)</code></pre></div>
 <p><img src="reference/figures/README-recursivegraphjoin-1.png" width="100%"></p>
+<p><strong>filter_component_size</strong> - filter the components of a tidygraph object by their individual number of nodes (order).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gr &lt;-<span class="st"> </span>tidygraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tidygraph/topics/bind_graphs">bind_graphs</a></span>(<span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">4</span>, <span class="dt">name =</span> LETTERS),
+                             <span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">6</span>, <span class="dt">name =</span> letters))
+igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(gr)
+<span class="co">#&gt; [1] 2</span>
+igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(<span class="kw"><a href="reference/filter_component_size.html">filter_component_size</a></span>(gr, <span class="dt">min_size =</span> <span class="dv">5</span>))
+<span class="co">#&gt; [1] 1</span>
+igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(<span class="kw"><a href="reference/filter_component_size.html">filter_component_size</a></span>(gr, <span class="dt">max_size =</span> <span class="dv">5</span>))
+<span class="co">#&gt; [1] 1</span></code></pre></div>
 <hr>
 </div>
 <div id="additions" class="section level2">

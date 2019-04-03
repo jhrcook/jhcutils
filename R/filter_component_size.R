@@ -20,12 +20,12 @@
 filter_component_size <- function(.data, min_size = 0, max_size = Inf) {
     new_gr <- .data %>%
         tidygraph::morph(tidygraph::to_components, type = "weak") %N>%
-        tidygraph::mutate(.comp_size = tidygraph::graph_order()) %>%
+        tidygraph::mutate(.comp_order = tidygraph::graph_order()) %>%
         tidygraph::unmorph() %>%
-        tidygraph::filter(dplyr::between(.comp_size, !!min_size, !!max_size)) %>%
-        tidygraph::select(-.comp_size)
+        tidygraph::filter(dplyr::between(.comp_order, !!min_size, !!max_size)) %>%
+        tidygraph::select(-.comp_order)
     return(new_gr)
 }
 
 # for "filter_component_size"
-utils::globalVariables(c(".comp_size"), add = TRUE)
+utils::globalVariables(c(".comp_order"), add = TRUE)

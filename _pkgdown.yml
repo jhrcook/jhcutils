@@ -9,6 +9,7 @@ reference:
 - title: for 'tidygraph'
   contents:
   - '`filter_component_size`'
+  - '`get_giant_component`'
   - '`recursive_graph_join`'
   - '`quick_forestfire`'
   - '`quick_barabasi`'

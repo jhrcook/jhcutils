@@ -23,4 +23,6 @@ Imports:
     rlang,
     purrr,
     igraph,
-    dplyr
+    dplyr,
+    data.table,
+    tibble

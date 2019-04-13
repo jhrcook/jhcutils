@@ -46,7 +46,7 @@ get_df_type <- function(df) {
 
 # one line per column of the data frame
 item_lines <- function(df, num_spaces) {
-    cat("#' \\describe {\n")
+    cat("#' \\describe{\n")
     purrr::map(colnames(df), item_line, num_spaces = num_spaces)
     return(0)
 }

@@ -16,7 +16,7 @@ You can install 'jhcutils' with:
 devtools::install_github("jhrcook/jhcutils")
 ```
 
-Full documentation: ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html)
+Full documentation at the ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html).
 
 ------------------------------------------------------------------------
 
@@ -186,6 +186,33 @@ igraph::count_components(filter_component_size(gr, min_size = 5))
 #> [1] 1
 igraph::count_components(filter_component_size(gr, max_size = 5))
 #> [1] 1
+```
+
+Pacakge Utilities
+-----------------
+
+**document\_df** - prints the framework for documenting a data frame object.
+
+``` r
+dat <- tibble::tibble(x = c(LETTERS[1:5]),
+                      y = c(1:5),
+                      z = list(rep(list(1:3), 5)))
+dat
+#> # A tibble: 5 x 3
+#>   x         y z         
+#>   <chr> <int> <list>    
+#> 1 A         1 <list [5]>
+#> 2 B         2 <list [5]>
+#> 3 C         3 <list [5]>
+#> 4 D         4 <list [5]>
+#> 5 E         5 <list [5]>
+document_df(dat)
+#> #' @format a tibble (5 x 3)
+#> #' \describe {
+#> #'     \item{x}{}
+#> #'     \item{y}{}
+#> #'     \item{z}{}
+#> #' }
 ```
 
 ------------------------------------------------------------------------

@@ -15,6 +15,10 @@ reference:
   - '`quick_barabasi`'
   - '`quick_graph`'
 
+- title: package utilities
+  contents:
+  - '`document_df`'
+
 - title: internal
   contents:
   - '`prep_node_names`'

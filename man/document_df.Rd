@@ -2,7 +2,7 @@
 % Please edit documentation in R/document_df.R
 \name{document_df}
 \alias{document_df}
-\title{Prints frameowrk for documenting a data frame}
+\title{Prints framework for documenting a data frame}
 \usage{
 document_df(df, num_spaces = 4)
 }
@@ -11,6 +11,9 @@ document_df(df, num_spaces = 4)
 or \code{tibble}}
 
 \item{num_spaces}{number of a spaces per tab; default is 4}
+}
+\value{
+nothing
 }
 \description{
 Prints the standard fframework for documenting a data frame in

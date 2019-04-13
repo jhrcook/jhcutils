@@ -1,4 +1,4 @@
-#' Prints frameowrk for documenting a data frame
+#' Prints framework for documenting a data frame
 #'
 #' @description Prints the standard fframework for documenting a data frame in
 #'     an R package.
@@ -6,6 +6,8 @@
 #' @param df data frame object; can be a \code{data.frame}, \code{data.table},
 #'     or \code{tibble}
 #' @param num_spaces number of a spaces per tab; default is 4
+#'
+#' @return nothing
 #'
 #' @examples
 #' set.seed(0)
@@ -26,9 +28,7 @@ line_one <- function(df) {
     df_type <- get_df_type(df)
     n_rows <- nrow(df)
     n_cols <- ncol(df)
-    msg <- cat("#' @format a ", df_type,
-               " (", n_rows, " x ", n_cols, ")\n",
-               sep = "")
+    cat("#' @format a ", df_type, " (", n_rows, " x ", n_cols, ")\n", sep = "")
 }
 
 # return the data frame object type

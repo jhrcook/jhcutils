@@ -140,6 +140,6 @@ document_df(dat)
 
 ---
 
-## Additions
+### Additions
 
 If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).

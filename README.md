@@ -1,27 +1,34 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
-==========================================================================================================================================
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Travis build status](https://travis-ci.org/jhrcook/jhcutils.svg?branch=master)](https://travis-ci.org/jhrcook/jhcutils) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/jhrcook/jhcutils?branch=master&svg=true)](https://ci.appveyor.com/project/jhrcook/jhcutils) [![Coverage status](https://codecov.io/gh/jhrcook/jhcutils/branch/master/graph/badge.svg)](https://codecov.io/github/jhrcook/jhcutils?branch=master)
+# jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
-These are a bunch of functions that I find myself declaring and rewriting in a many scripts and analyses.
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Travis build
+status](https://travis-ci.org/jhrcook/jhcutils.svg?branch=master)](https://travis-ci.org/jhrcook/jhcutils)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/jhrcook/jhcutils?branch=master&svg=true)](https://ci.appveyor.com/project/jhrcook/jhcutils)
+[![Coverage
+status](https://codecov.io/gh/jhrcook/jhcutils/branch/master/graph/badge.svg)](https://codecov.io/github/jhrcook/jhcutils?branch=master)
 
-Installation
-------------
+These are a bunch of functions that I find myself declaring and
+rewriting in a many scripts and analyses.
 
-You can install 'jhcutils' with:
+## Installation
+
+You can install ‘jhcutils’ with:
 
 ``` r
 devtools::install_github("jhrcook/jhcutils")
 ```
 
-Full documentation at the ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html).
+Full documentation at the [‘pkgdown
+site’](https://jhrcook.github.io/jhcutils/index.html).
 
-------------------------------------------------------------------------
+-----
 
-General Utilities
------------------
+## General Utilities
 
 **n\_unique** - return the number of unique values in a vector.
 
@@ -65,10 +72,11 @@ minmax(c, -10, 10)
 #> [18]  10  10 -10
 ```
 
-Tidygraph
----------
+## Tidygraph
 
-**quick\_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
+**quick\_forestfire** - wrapper around `tidygraph::play_forestfire`
+except that it will return a tidygraph object with the node attribute
+`"name"`.
 
 ``` r
 forest_gr <- quick_forestfire(10)
@@ -101,7 +109,9 @@ my_plot_fxn(forest_gr) +
 
 <img src="man/figures/README-forestfire-1.png" width="100%" />
 
-**quick\_barabasi** - wrapper around `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
+**quick\_barabasi** - wrapper around `tidygraph::play_barabasi_albert`
+except that it will return a tidygraph object with the node attribute
+`"name"`.
 
 ``` r
 barabasi_gr <- quick_barabasi(10)
@@ -141,7 +151,8 @@ quick_gr <- quick_graph(10)
 #> using barabasi_albert
 ```
 
-**recursive\_graph\_join** - recursively join a list of tidygraph objects.
+**recursive\_graph\_join** - recursively join a list of tidygraph
+objects.
 
 ``` r
 gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
@@ -175,7 +186,8 @@ my_plot_fxn(gr) +
 
 <img src="man/figures/README-recursivegraphjoin-1.png" width="100%" />
 
-**filter\_component\_size** - filter the components of a tidygraph object by their individual number of nodes (order).
+**filter\_component\_size** - filter the components of a tidygraph
+object by their individual number of nodes (order).
 
 ``` r
 gr <- tidygraph::bind_graphs(quick_forestfire(4, name = LETTERS),
@@ -188,10 +200,10 @@ igraph::count_components(filter_component_size(gr, max_size = 5))
 #> [1] 1
 ```
 
-Pacakge Utilities
------------------
+## Pacakge Utilities
 
-**document\_df** - prints the framework for documenting a data frame object.
+**document\_df** - prints the framework for documenting a data frame
+object.
 
 ``` r
 dat <- tibble::tibble(x = c(LETTERS[1:5]),
@@ -208,16 +220,16 @@ dat
 #> 5 E         5 <list [5]>
 document_df(dat)
 #> #' @format a tibble (5 x 3)
-#> #' \describe {
+#> #' \describe{
 #> #'     \item{x}{}
 #> #'     \item{y}{}
 #> #'     \item{z}{}
 #> #' }
 ```
 
-------------------------------------------------------------------------
+-----
 
-Additions
----------
+### Additions
 
-If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).
+If you have any recommended additions, please open an
+[issue](https://github.com/jhrcook/jhcutils/issues).

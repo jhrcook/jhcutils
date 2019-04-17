@@ -28,6 +28,8 @@ These are light-weight wrappers around 'tidygraph' functions to
 create random graphs. They return graphs with named nodes.
 }
 \examples{
+set.seed(0)
+
 forest_gr <- quick_forestfire(20)
 forest_gr
 plot(forest_gr)

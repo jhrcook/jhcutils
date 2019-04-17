@@ -87,7 +87,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install ‘jhcutils’ with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jhrcook/jhcutils"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jhrcook/jhcutils"</span>)</a></code></pre></div>
 <p>Full documentation at the <a href="https://jhrcook.github.io/jhcutils/index.html">‘pkgdown site’</a>.</p>
 <hr>
 </div>
@@ -95,166 +95,166 @@
 <h2 class="hasAnchor">
 <a href="#general-utilities" class="anchor"></a>General Utilities</h2>
 <p><strong>n_unique</strong> - return the number of unique values in a vector.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
-<span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(a)
-<span class="co">#&gt; [1] 5</span>
-b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))
-<span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b)
-<span class="co">#&gt; [1] 2</span>
-<span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; [1] 5</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(a)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] 5</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] 2</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="reference/n_unique.html">n_unique</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; [1] 5</span></a></code></pre></div>
 <p><strong>unique_na</strong> - return the unique values in a vector, omitting <code>NA</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">3</span>)
-<span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(a)
-<span class="co">#&gt; [1] 1 2 3</span>
-b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">5</span>))
-<span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b)
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; [1]  1  2  3 NA</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; [1]  1  2 NA  5</span>
-<span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; [1] 1 2 3 5</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(a)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [1] 1 2 3</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">b &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; [[1]]</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [1]  1  2  3 NA</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [[2]]</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; [1]  1  2 NA  5</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw"><a href="reference/unique_na.html">unique_na</a></span>(b, <span class="dt">to_unlist =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; [1] 1 2 3 5</span></a></code></pre></div>
 <p><strong>minmax</strong> - set limits on a vector of numeric values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="op">-</span><span class="dv">100</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">20</span>)
-c
-<span class="co">#&gt;  [1]  80 -47 -26  13  78 -61  75  83  27  20 -89  95 -67  29 -29  43  -8</span>
-<span class="co">#&gt; [18]  32  81 -31</span>
-<span class="kw"><a href="reference/minmax.html">minmax</a></span>(c, <span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>)
-<span class="co">#&gt;  [1]  10 -10 -10  10  10 -10  10  10  10  10 -10  10 -10  10 -10  10  -8</span>
-<span class="co">#&gt; [18]  10  10 -10</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">c &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="op">-</span><span class="dv">100</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">c</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;  [1]  80 -47 -26  13  78 -61  75  83  27  20 -89  95 -67  29 -29  43  -8</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [18]  32  81 -31</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="reference/minmax.html">minmax</a></span>(c, <span class="dv">-10</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  [1]  10 -10 -10  10  10 -10  10  10  10  10 -10  10 -10  10 -10  10  -8</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [18]  10  10 -10</span></a></code></pre></div>
 </div>
 <div id="tidygraph" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidygraph" class="anchor"></a>Tidygraph</h2>
 <p><strong>quick_forestfire</strong> - wrapper around <code><a href="https://www.rdocumentation.org/packages/tidygraph/topics/evolution_games">tidygraph::play_forestfire</a></code> except that it will return a tidygraph object with the node attribute <code>"name"</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">forest_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">10</span>)
-forest_gr
-<span class="co">#&gt; # A tbl_graph: 10 nodes and 19 edges</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # An undirected simple graph with 1 component</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # Node Data: 10 x 1 (active)</span>
-<span class="co">#&gt;   name </span>
-<span class="co">#&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1 A    </span>
-<span class="co">#&gt; 2 B    </span>
-<span class="co">#&gt; 3 C    </span>
-<span class="co">#&gt; 4 D    </span>
-<span class="co">#&gt; 5 E    </span>
-<span class="co">#&gt; 6 F    </span>
-<span class="co">#&gt; # … with 4 more rows</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # Edge Data: 19 x 2</span>
-<span class="co">#&gt;    from    to</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1     1     2</span>
-<span class="co">#&gt; 2     1     3</span>
-<span class="co">#&gt; 3     2     3</span>
-<span class="co">#&gt; # … with 16 more rows</span>
-<span class="kw">my_plot_fxn</span>(forest_gr) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of a quick Forest Fire graph model"</span>)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">forest_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">forest_gr</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tbl_graph: 10 nodes and 19 edges</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; # An undirected simple graph with 1 component</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; # Node Data: 10 x 1 (active)</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;   name </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;   &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 1 A    </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 2 B    </span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 3 C    </span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 4 D    </span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 5 E    </span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 6 F    </span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # … with 4 more rows</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; # Edge Data: 19 x 2</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;    from    to</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 1     1     2</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 2     1     3</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; 3     2     3</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; # … with 16 more rows</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="kw">my_plot_fxn</span>(forest_gr) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of a quick Forest Fire graph model"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-forestfire-1.png" width="100%"></p>
 <p><strong>quick_barabasi</strong> - wrapper around <code><a href="https://www.rdocumentation.org/packages/tidygraph/topics/evolution_games">tidygraph::play_barabasi_albert</a></code> except that it will return a tidygraph object with the node attribute <code>"name"</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barabasi_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_barabasi</a></span>(<span class="dv">10</span>)
-barabasi_gr
-<span class="co">#&gt; # A tbl_graph: 10 nodes and 9 edges</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # An undirected simple graph with 1 component</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # Node Data: 10 x 1 (active)</span>
-<span class="co">#&gt;   name </span>
-<span class="co">#&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1 A    </span>
-<span class="co">#&gt; 2 B    </span>
-<span class="co">#&gt; 3 C    </span>
-<span class="co">#&gt; 4 D    </span>
-<span class="co">#&gt; 5 E    </span>
-<span class="co">#&gt; 6 F    </span>
-<span class="co">#&gt; # … with 4 more rows</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # Edge Data: 9 x 2</span>
-<span class="co">#&gt;    from    to</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1     1     2</span>
-<span class="co">#&gt; 2     1     3</span>
-<span class="co">#&gt; 3     3     4</span>
-<span class="co">#&gt; # … with 6 more rows</span>
-<span class="kw">my_plot_fxn</span>(barabasi_gr) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of a quick Barabasi-Albert graph"</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">barabasi_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_barabasi</a></span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">barabasi_gr</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tbl_graph: 10 nodes and 9 edges</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; # An undirected simple graph with 1 component</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; # Node Data: 10 x 1 (active)</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;   name </span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;   &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 1 A    </span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 2 B    </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 3 C    </span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 4 D    </span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 5 E    </span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 6 F    </span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; # … with 4 more rows</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; # Edge Data: 9 x 2</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;    from    to</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1     1     2</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2     1     3</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; 3     3     4</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; # … with 6 more rows</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="kw">my_plot_fxn</span>(barabasi_gr) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of a quick Barabasi-Albert graph"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-barbasi-1.png" width="100%"></p>
 <p><strong>quick_graph</strong> - randomly selects one of the above random graphs.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quick_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_graph</a></span>(<span class="dv">10</span>)
-<span class="co">#&gt; using barabasi_albert</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">quick_gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/random_graph.html">quick_graph</a></span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; using barabasi_albert</span></a></code></pre></div>
 <p><strong>recursive_graph_join</strong> - recursively join a list of tidygraph objects.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gr_list &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>), quick_forestfire)
-gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/recursive_graph_join.html">recursive_graph_join</a></span>(gr_list)
-gr
-<span class="co">#&gt; # A tbl_graph: 15 nodes and 85 edges</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # A directed acyclic multigraph with 1 component</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # Node Data: 15 x 1 (active)</span>
-<span class="co">#&gt;   name </span>
-<span class="co">#&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1 A    </span>
-<span class="co">#&gt; 2 B    </span>
-<span class="co">#&gt; 3 C    </span>
-<span class="co">#&gt; 4 D    </span>
-<span class="co">#&gt; 5 E    </span>
-<span class="co">#&gt; 6 F    </span>
-<span class="co">#&gt; # … with 9 more rows</span>
-<span class="co">#&gt; #</span>
-<span class="co">#&gt; # Edge Data: 85 x 2</span>
-<span class="co">#&gt;    from    to</span>
-<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1     1     2</span>
-<span class="co">#&gt; 2     2     3</span>
-<span class="co">#&gt; 3     2     4</span>
-<span class="co">#&gt; # … with 82 more rows</span>
-<span class="kw">my_plot_fxn</span>(gr) <span class="op">+</span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of joining 3 forest fire graphs"</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">gr_list &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>), quick_forestfire)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">gr &lt;-<span class="st"> </span><span class="kw"><a href="reference/recursive_graph_join.html">recursive_graph_join</a></span>(gr_list)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">gr</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; # A tbl_graph: 15 nodes and 85 edges</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; # A directed acyclic multigraph with 1 component</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; # Node Data: 15 x 1 (active)</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;   name </span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;   &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 1 A    </span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 2 B    </span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; 3 C    </span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 4 D    </span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 5 E    </span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 6 F    </span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; # … with 9 more rows</span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; #</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; # Edge Data: 85 x 2</span></a>
+<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt;    from    to</span></a>
+<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; 1     1     2</span></a>
+<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="co">#&gt; 2     2     3</span></a>
+<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="co">#&gt; 3     2     4</span></a>
+<a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt; # … with 82 more rows</span></a>
+<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="kw">my_plot_fxn</span>(gr) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Example of joining 3 forest fire graphs"</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-recursivegraphjoin-1.png" width="100%"></p>
 <p><strong>filter_component_size</strong> - filter the components of a tidygraph object by their individual number of nodes (order).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gr &lt;-<span class="st"> </span>tidygraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tidygraph/topics/bind_graphs">bind_graphs</a></span>(<span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">4</span>, <span class="dt">name =</span> LETTERS),
-                             <span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">6</span>, <span class="dt">name =</span> letters))
-igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(gr)
-<span class="co">#&gt; [1] 2</span>
-igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(<span class="kw"><a href="reference/filter_component_size.html">filter_component_size</a></span>(gr, <span class="dt">min_size =</span> <span class="dv">5</span>))
-<span class="co">#&gt; [1] 1</span>
-igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(<span class="kw"><a href="reference/filter_component_size.html">filter_component_size</a></span>(gr, <span class="dt">max_size =</span> <span class="dv">5</span>))
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">gr &lt;-<span class="st"> </span>tidygraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tidygraph/topics/bind_graphs">bind_graphs</a></span>(<span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">4</span>, <span class="dt">name =</span> LETTERS),</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">                             <span class="kw"><a href="reference/random_graph.html">quick_forestfire</a></span>(<span class="dv">6</span>, <span class="dt">name =</span> letters))</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(gr)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; [1] 2</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(<span class="kw"><a href="reference/filter_component_size.html">filter_component_size</a></span>(gr, <span class="dt">min_size =</span> <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; [1] 1</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">igraph<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/components">count_components</a></span>(<span class="kw"><a href="reference/filter_component_size.html">filter_component_size</a></span>(gr, <span class="dt">max_size =</span> <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; [1] 1</span></a></code></pre></div>
 </div>
 <div id="pacakge-utilities" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pacakge-utilities" class="anchor"></a>Pacakge Utilities</h2>
 <p><strong>document_df</strong> - prints the framework for documenting a data frame object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]),
-                      <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),
-                      <span class="dt">z =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="dv">5</span>)))
-dat
-<span class="co">#&gt; # A tibble: 5 x 3</span>
-<span class="co">#&gt;   x         y z         </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;list&gt;    </span>
-<span class="co">#&gt; 1 A         1 &lt;list [5]&gt;</span>
-<span class="co">#&gt; 2 B         2 &lt;list [5]&gt;</span>
-<span class="co">#&gt; 3 C         3 &lt;list [5]&gt;</span>
-<span class="co">#&gt; 4 D         4 &lt;list [5]&gt;</span>
-<span class="co">#&gt; 5 E         5 &lt;list [5]&gt;</span>
-<span class="kw"><a href="reference/document_df.html">document_df</a></span>(dat)
-<span class="co">#&gt; #' @format a tibble (5 x 3)</span>
-<span class="co">#&gt; #' \describe{</span>
-<span class="co">#&gt; #'     \item{x}{}</span>
-<span class="co">#&gt; #'     \item{y}{}</span>
-<span class="co">#&gt; #'     \item{z}{}</span>
-<span class="co">#&gt; #' }</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">dat &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]),</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">                      <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">                      <span class="dt">z =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>), <span class="dv">5</span>)))</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">dat</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 3</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;   x         y z         </span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt; &lt;int&gt; &lt;list&gt;    </span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 1 A         1 &lt;list [5]&gt;</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 2 B         2 &lt;list [5]&gt;</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 3 C         3 &lt;list [5]&gt;</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 4 D         4 &lt;list [5]&gt;</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 5 E         5 &lt;list [5]&gt;</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="kw"><a href="reference/document_df.html">document_df</a></span>(dat)</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; #' @format a tibble (5 x 3)</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; #' \describe{</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; #'     \item{x}{}</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; #'     \item{y}{}</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; #'     \item{z}{}</span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; #' }</span></a></code></pre></div>
 <hr>
-</div>
-<div id="additions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additions" class="anchor"></a>Additions</h2>
+<div id="additions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#additions" class="anchor"></a>Additions</h3>
 <p>If you have any recommended additions, please open an <a href="https://github.com/jhrcook/jhcutils/issues">issue</a>.</p>
+</div>
 </div>
 </div>
   </div>

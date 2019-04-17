@@ -9,6 +9,8 @@
 #' @return a single tidygraph object
 #'
 #' @examples
+#' set.seed(0)
+#'
 #' gr_list <- purrr::map(c(10, 15, 20), quick_forestfire)
 #' gr <- recursive_graph_join(gr_list)
 #' gr

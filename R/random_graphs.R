@@ -12,6 +12,8 @@
 #' @name random_graph
 #'
 #' @examples
+#' set.seed(0)
+#'
 #' forest_gr <- quick_forestfire(20)
 #' forest_gr
 #' plot(forest_gr)

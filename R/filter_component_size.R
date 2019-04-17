@@ -18,6 +18,7 @@
 #' @importFrom tidygraph %N>% %>%
 #' @export filter_component_size
 filter_component_size <- function(.data, min_size = 0, max_size = Inf) {
+    if (igraph::vcount(.data) == 0) return(.data)
     new_gr <- .data %>%
         tidygraph::morph(tidygraph::to_components, type = "weak") %N>%
         tidygraph::mutate(.comp_order = tidygraph::graph_order()) %>%

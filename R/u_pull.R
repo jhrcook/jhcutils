@@ -5,6 +5,8 @@
 #'
 #' @param data a table of data
 #' @inheritParams tidyselect::vars_pull
+#' @param sorted (boolean) sort the output; default \code{FALSE}
+#' @param na.rm (boolean) remove \code{NA}; default \code{FALSE}
 #'
 #' @examples
 #' suppressPackageStartupMessages(library(dplyr))
@@ -13,18 +15,15 @@
 #'     u_pull(a)
 #'
 #' @export u_pull
-u_pull <- function(data, var = -1) {
+u_pull <- function(data, var = -1, sorted = FALSE, na.rm = FALSE) {
     UseMethod("u_pull")
 }
 
 #' @export
-u_pull.data.frame <- function(data, var = -1) {
+u_pull.data.frame <- function(data, var = -1, sorted = FALSE, na.rm = FALSE) {
     var <- tidyselect::vars_pull(names(data), !!rlang::enquo(var))
-    unique(data[[var]])
+    val <- unique(data[[var]])
+    if (na.rm) val <- val[!is.na(val)]
+    if (sorted) val <- sort(val)
+    return(val)
 }
-
-
-#' u_pull.tbl_df <- function(data, var = -1) {
-#'     var <- tidyselect::vars_pull(names(data), !!enquo(var))
-#'     unique(data[[var]])
-#' }

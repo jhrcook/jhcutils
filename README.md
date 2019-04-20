@@ -72,6 +72,16 @@ minmax(c, -10, 10)
 #> [18]  10  10 -10
 ```
 
+**u\_pull** - works just like `dplyr::pull()` expect only returns unique
+values.
+
+``` r
+str(mtcars$gear)
+#>  num [1:32] 4 4 4 3 3 3 3 4 4 4 ...
+mtcars %>% u_pull(gear)
+#> [1] 4 3 5
+```
+
 ## Tidygraph
 
 **quick\_forestfire** - wrapper around `tidygraph::play_forestfire`
@@ -79,9 +89,10 @@ except that it will return a tidygraph object with the node attribute
 `"name"`.
 
 ``` r
+set.seed(0)
 forest_gr <- quick_forestfire(10)
 forest_gr
-#> # A tbl_graph: 10 nodes and 19 edges
+#> # A tbl_graph: 10 nodes and 23 edges
 #> #
 #> # An undirected simple graph with 1 component
 #> #
@@ -96,13 +107,13 @@ forest_gr
 #> 6 F    
 #> # … with 4 more rows
 #> #
-#> # Edge Data: 19 x 2
+#> # Edge Data: 23 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     1     3
 #> 3     2     3
-#> # … with 16 more rows
+#> # … with 20 more rows
 my_plot_fxn(forest_gr) +
     labs(title = "Example of a quick Forest Fire graph model")
 ```
@@ -114,6 +125,7 @@ except that it will return a tidygraph object with the node attribute
 `"name"`.
 
 ``` r
+set.seed(0)
 barabasi_gr <- quick_barabasi(10)
 barabasi_gr
 #> # A tbl_graph: 10 nodes and 9 edges
@@ -135,8 +147,8 @@ barabasi_gr
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
-#> 2     1     3
-#> 3     3     4
+#> 2     2     3
+#> 3     1     4
 #> # … with 6 more rows
 my_plot_fxn(barabasi_gr) +
     labs(title = "Example of a quick Barabasi-Albert graph")
@@ -147,6 +159,7 @@ my_plot_fxn(barabasi_gr) +
 **quick\_graph** - randomly selects one of the above random graphs.
 
 ``` r
+set.seed(0)
 quick_gr <- quick_graph(10)
 #> using barabasi_albert
 ```
@@ -158,7 +171,7 @@ objects.
 gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
 gr <- recursive_graph_join(gr_list)
 gr
-#> # A tbl_graph: 15 nodes and 85 edges
+#> # A tbl_graph: 15 nodes and 65 edges
 #> #
 #> # A directed acyclic multigraph with 1 component
 #> #
@@ -173,13 +186,13 @@ gr
 #> 6 F    
 #> # … with 9 more rows
 #> #
-#> # Edge Data: 85 x 2
+#> # Edge Data: 65 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
-#> 3     2     4
-#> # … with 82 more rows
+#> 3     1     4
+#> # … with 62 more rows
 my_plot_fxn(gr) +
     labs(title = "Example of joining 3 forest fire graphs")
 ```

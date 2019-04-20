@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 library(jhcutils)
+library(datasets)
+library(dplyr)
 set.seed(0)
 ```
 # jhcutils <img src="man/figures/logo.png" align="right" alt="" width="120" />
@@ -65,6 +67,13 @@ c
 minmax(c, -10, 10)
 ```
 
+**u_pull** - works just like `dplyr::pull()` expect only returns unique values.
+
+```{r upull}
+str(mtcars$gear)
+mtcars %>% u_pull(gear)
+```
+
 
 ## Tidygraph
 
@@ -84,6 +93,7 @@ my_plot_fxn <- function(gr) {
 **quick_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
 
 ```{r forestfire}
+set.seed(0)
 forest_gr <- quick_forestfire(10)
 forest_gr
 my_plot_fxn(forest_gr) +
@@ -93,6 +103,7 @@ my_plot_fxn(forest_gr) +
 **quick_barabasi** - wrapper around `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
 
 ```{r barbasi}
+set.seed(0)
 barabasi_gr <- quick_barabasi(10)
 barabasi_gr
 my_plot_fxn(barabasi_gr) +
@@ -102,6 +113,7 @@ my_plot_fxn(barabasi_gr) +
 **quick_graph** - randomly selects one of the above random graphs.
 
 ```{r quickgraph}
+set.seed(0)
 quick_gr <- quick_graph(10)
 ```
 

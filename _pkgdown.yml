@@ -6,6 +6,7 @@ reference:
   - '`n_unique`'
   - '`unique_na`'
   - '`tidy_colnames`'
+  - '`u_pull`'
 
 - title: for 'tidygraph'
   contents:

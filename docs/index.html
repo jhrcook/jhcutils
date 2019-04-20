@@ -79,7 +79,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="jhcutils" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#jhcutils" class="anchor"></a>jhcutils <img src="reference/figures/logo.png" align="right" alt="" width="120">
+<a href="#jhcutils" class="anchor"></a>jhcutils <a href="https://jhrcook.github.io/ggasym/index.html"> <img src="reference/figures/logo.png" align="right" alt="" width="120"></a>
 </h1></div>
 
 <p>These are a bunch of functions that I find myself declaring and rewriting in a many scripts and analyses.</p>
@@ -124,7 +124,7 @@
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="reference/minmax.html">minmax</a></span>(c, <span class="dv">-10</span>, <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  [1]  10 -10 -10  10  10 -10  10  10  10  10 -10  10 -10  10 -10  10  -8</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [18]  10  10 -10</span></a></code></pre></div>
-<p><strong>u_pull</strong> - works just like <code><a href="https://dplyr.tidyverse.org/reference/pull.html">dplyr::pull()</a></code> expect only returns unique values.</p>
+<p><strong>u_pull</strong> - works just like <code><a href="https://dplyr.tidyverse.org/reference/pull.html">dplyr::pull()</a></code> except only returns unique values. There are also options to return the values sorted and without <code>NA</code> using the paramters <code>sorted</code> and <code>na.rm</code>, respectively.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(mtcars<span class="op">$</span>gear)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;  num [1:32] 4 4 4 3 3 3 3 4 4 4 ...</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">mtcars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/u_pull.html">u_pull</a></span>(gear)</a>

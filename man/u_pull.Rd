@@ -4,7 +4,7 @@
 \alias{u_pull}
 \title{Pull the unique values from a column of a tibble}
 \usage{
-u_pull(data, var = -1)
+u_pull(data, var = -1, sorted = FALSE, na.rm = FALSE)
 }
 \arguments{
 \item{data}{a table of data}
@@ -22,6 +22,10 @@ column you've created most recently).
 This argument is taken by expression and supports
 \link[rlang:quasiquotation]{quasiquotation} (you can unquote column
 names and column positions).}
+
+\item{sorted}{(boolean) sort the output; default \code{FALSE}}
+
+\item{na.rm}{(boolean) remove \code{NA}; default \code{FALSE}}
 }
 \description{
 Acts just like 'pull()' from 'dplyr' except that it only

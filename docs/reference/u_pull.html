@@ -121,7 +121,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>u_pull</span>(<span class='no'>data</span>, <span class='kw'>var</span> <span class='kw'>=</span> -<span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>u_pull</span>(<span class='no'>data</span>, <span class='kw'>var</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,6 +143,14 @@ column you've created most recently).</p>
 <p>This argument is taken by expression and supports
 <a href='https://rlang.r-lib.org/reference/quasiquotation.html'>quasiquotation</a> (you can unquote column
 names and column positions).</p></td>
+    </tr>
+    <tr>
+      <th>sorted</th>
+      <td><p>(boolean) sort the output; default <code>FALSE</code></p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>(boolean) remove <code>NA</code>; default <code>FALSE</code></p></td>
     </tr>
     </table>
     

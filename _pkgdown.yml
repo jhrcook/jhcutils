@@ -5,6 +5,7 @@ reference:
   - '`n_perm`'
   - '`n_unique`'
   - '`unique_na`'
+  - '`tidy_colnames`'
 
 - title: for 'tidygraph'
   contents:

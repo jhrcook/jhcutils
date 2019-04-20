@@ -16,7 +16,7 @@ library(datasets)
 library(dplyr)
 set.seed(0)
 ```
-# jhcutils <img src="man/figures/logo.PNG" align="right" alt="" width="120" />
+# jhcutils <a href="https://jhrcook.github.io/ggasym/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Travis build status](https://travis-ci.org/jhrcook/jhcutils.svg?branch=master)](https://travis-ci.org/jhrcook/jhcutils)
@@ -67,7 +67,7 @@ c
 minmax(c, -10, 10)
 ```
 
-**u_pull** - works just like `dplyr::pull()` expect only returns unique values.
+**u_pull** - works just like `dplyr::pull()` except only returns unique values. There are also options to return the values sorted and without `NA` using the paramters `sorted` and `na.rm`, respectively.
 
 ```{r upull}
 str(mtcars$gear)

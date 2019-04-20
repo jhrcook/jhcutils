@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# jhcutils <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# jhcutils <a href="https://jhrcook.github.io/ggasym/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -72,8 +72,9 @@ minmax(c, -10, 10)
 #> [18]  10  10 -10
 ```
 
-**u\_pull** - works just like `dplyr::pull()` expect only returns unique
-values.
+**u\_pull** - works just like `dplyr::pull()` except only returns unique
+values. There are also options to return the values sorted and without
+`NA` using the paramters `sorted` and `na.rm`, respectively.
 
 ``` r
 str(mtcars$gear)

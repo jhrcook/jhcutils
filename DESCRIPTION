@@ -25,4 +25,5 @@ Imports:
     igraph,
     dplyr,
     data.table,
-    tibble
+    tibble,
+    stringr

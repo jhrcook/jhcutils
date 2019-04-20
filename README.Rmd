@@ -11,10 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-library(jhcutils)
-library(datasets)
-library(dplyr)
-set.seed(0)
+
 ```
 # jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
@@ -25,6 +22,8 @@ set.seed(0)
 
 These are a bunch of functions that I find myself declaring and rewriting in a many scripts and analyses.
 
+Full documentation at the ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html).
+
 ## Installation
 
 You can install 'jhcutils' with:
@@ -33,7 +32,12 @@ You can install 'jhcutils' with:
 devtools::install_github("jhrcook/jhcutils")
 ```
 
-Full documentation at the ['pkgdown site'](https://jhrcook.github.io/jhcutils/index.html).
+```{r load_libraries, warning = FALSE, message = FALSE}
+library(jhcutils)
+library(datasets)
+library(dplyr)
+set.seed(0)
+```
 
 ---
 
@@ -93,7 +97,6 @@ my_plot_fxn <- function(gr) {
 **quick_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
 
 ```{r forestfire}
-set.seed(0)
 forest_gr <- quick_forestfire(10)
 forest_gr
 my_plot_fxn(forest_gr) +
@@ -103,7 +106,6 @@ my_plot_fxn(forest_gr) +
 **quick_barabasi** - wrapper around `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
 
 ```{r barbasi}
-set.seed(0)
 barabasi_gr <- quick_barabasi(10)
 barabasi_gr
 my_plot_fxn(barabasi_gr) +
@@ -113,7 +115,6 @@ my_plot_fxn(barabasi_gr) +
 **quick_graph** - randomly selects one of the above random graphs.
 
 ```{r quickgraph}
-set.seed(0)
 quick_gr <- quick_graph(10)
 ```
 

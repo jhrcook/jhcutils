@@ -26,4 +26,5 @@ Imports:
     dplyr,
     data.table,
     tibble,
-    stringr
+    stringr,
+    tidyselect

@@ -1,3 +1,28 @@
+template:
+  params:
+    bootswatch: yeti
+
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right: github
+  components:
+    home:
+      icon: fa-home fa-2x
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    github:
+      icon: fa-github fa-2x
+      href: https://github.com/jhrcook/jhcutils
+
 reference:
 - title: general utilities
   contents:

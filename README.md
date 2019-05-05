@@ -218,6 +218,83 @@ igraph::count_components(filter_component_size(gr, max_size = 5))
 #> [1] 1
 ```
 
+**get/rm\_giant\_component** - either return only or everything except
+the giant component of a graph (i.e. the component with the most number
+of nodes).
+
+``` r
+gr_large <- quick_forestfire(10, name = LETTERS)
+gr_small <- quick_forestfire(5, name = letters)
+gr <- tidygraph::bind_graphs(gr_large, gr_small)
+gr
+#> # A tbl_graph: 15 nodes and 20 edges
+#> #
+#> # A directed acyclic simple graph with 2 components
+#> #
+#> # Node Data: 15 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 A    
+#> 2 B    
+#> 3 C    
+#> 4 D    
+#> 5 E    
+#> 6 F    
+#> # … with 9 more rows
+#> #
+#> # Edge Data: 20 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     2     3
+#> 3     3     4
+#> # … with 17 more rows
+get_giant_component(gr)
+#> # A tbl_graph: 10 nodes and 10 edges
+#> #
+#> # A directed acyclic simple graph with 1 component
+#> #
+#> # Node Data: 10 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 A    
+#> 2 B    
+#> 3 C    
+#> 4 D    
+#> 5 E    
+#> 6 F    
+#> # … with 4 more rows
+#> #
+#> # Edge Data: 10 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     2     3
+#> 3     3     4
+#> # … with 7 more rows
+rm_giant_component(gr)
+#> # A tbl_graph: 5 nodes and 10 edges
+#> #
+#> # A directed acyclic simple graph with 1 component
+#> #
+#> # Node Data: 5 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 a    
+#> 2 b    
+#> 3 c    
+#> 4 d    
+#> 5 e    
+#> #
+#> # Edge Data: 10 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     1     3
+#> 3     2     3
+#> # … with 7 more rows
+```
+
 ## Pacakge Utilities
 
 **document\_df** - prints the framework for documenting a data frame
@@ -251,3 +328,12 @@ document_df(dat)
 
 If you have any recommended additions, please open an
 [issue](https://github.com/jhrcook/jhcutils/issues).
+
+-----
+
+[![jhc
+github](https://img.shields.io/badge/GitHub-jhrcook-lightgrey.svg?style=flat&logo=github)](https://github.com/jhrcook)
+[![jhc
+twitter](https://img.shields.io/badge/Twitter-JoshDoesaThing-00aced.svg?style=flat&logo=twitter)](https://twitter.com/JoshDoesa)
+[![jhc
+website](https://img.shields.io/badge/Website-JoshDoesaThing-5087B2.svg?style=flat&logo=telegram)](https://www.joshdoesathing.com)

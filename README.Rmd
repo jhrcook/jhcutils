@@ -138,6 +138,17 @@ igraph::count_components(filter_component_size(gr, min_size = 5))
 igraph::count_components(filter_component_size(gr, max_size = 5))
 ```
 
+**get/rm_giant_component** - either return only or everything except the giant component of a graph (i.e. the component with the most number of nodes).
+
+```{r}
+gr_large <- quick_forestfire(10, name = LETTERS)
+gr_small <- quick_forestfire(5, name = letters)
+gr <- tidygraph::bind_graphs(gr_large, gr_small)
+gr
+get_giant_component(gr)
+rm_giant_component(gr)
+```
+
 
 ## Pacakge Utilities
 
@@ -156,3 +167,10 @@ document_df(dat)
 ### Additions
 
 If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).
+
+---
+
+[![jhc github](https://img.shields.io/badge/GitHub-jhrcook-lightgrey.svg?style=flat&logo=github)](https://github.com/jhrcook)
+[![jhc twitter](https://img.shields.io/badge/Twitter-JoshDoesaThing-00aced.svg?style=flat&logo=twitter)](https://twitter.com/JoshDoesa)
+[![jhc website](https://img.shields.io/badge/Website-JoshDoesaThing-5087B2.svg?style=flat&logo=telegram)](https://www.joshdoesathing.com)
+

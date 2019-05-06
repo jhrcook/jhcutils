@@ -38,11 +38,12 @@ reference:
   - '`tidy_colnames`'
   - '`u_pull`'
 
-- title: for 'tidygraph'
+- title: or 'tidygraph'
   contents:
   - '`filter_component_size`'
   - '`get_giant_component`'
   - '`recursive_graph_join`'
+  - '`get_node_index`'
   - '`quick_forestfire`'
   - '`quick_barabasi`'
   - '`quick_graph`'

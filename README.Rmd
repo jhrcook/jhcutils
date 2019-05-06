@@ -149,6 +149,16 @@ get_giant_component(gr)
 rm_giant_component(gr)
 ```
 
+**get_node_index** - returns the indices of the nodes that pass the expression evaluted in 'dplyr::filter()`.
+
+```{r}
+# simple equalities
+get_node_index(quick_barabasi(10), name == "B")
+get_node_index(quick_barabasi(10), name %in% c("B", "C", "D"))
+# can also evaluate functions
+get_node_index(quick_barabasi(10), stringr::str_detect(name, "A|B|C"))
+```
+
 
 ## Pacakge Utilities
 

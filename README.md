@@ -295,6 +295,20 @@ rm_giant_component(gr)
 #> # … with 7 more rows
 ```
 
+**get\_node\_index** - returns the indices of the nodes that pass the
+expression evaluted in ’dplyr::filter()\`.
+
+``` r
+# simple equalities
+get_node_index(quick_barabasi(10), name == "B")
+#> [1] 2
+get_node_index(quick_barabasi(10), name %in% c("B", "C", "D"))
+#> [1] 2 3 4
+# can also evaluate functions
+get_node_index(quick_barabasi(10), stringr::str_detect(name, "A|B|C"))
+#> [1] 1 2 3
+```
+
 ## Pacakge Utilities
 
 **document\_df** - prints the framework for documenting a data frame

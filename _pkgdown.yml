@@ -34,8 +34,9 @@ reference:
   - '`minmax`'
   - '`n_perm`'
   - '`n_unique`'
-  - '`unique_na`'
+  - '`vsample`'
   - '`tidy_colnames`'
+  - '`unique_na`'
   - '`u_pull`'
 
 - title: or 'tidygraph'

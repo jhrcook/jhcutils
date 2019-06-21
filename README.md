@@ -90,6 +90,25 @@ mtcars %>% u_pull(gear)
 #> [1] 4 3 5
 ```
 
+**vsample** - a safe wrapper for `base::sample()` that always assumes
+you are passing a vector.
+
+``` r
+# samples from 1:10
+sample(10)
+#>  [1]  8  9  2  5  1 10  7  6  3  4
+# just returns 10
+vsample(10)
+#> [1] 10
+
+# samples from 1:5 with replacement
+sample(5, 10, replace = TRUE)
+#>  [1] 2 3 3 3 1 5 4 4 1 4
+# samples from `c(5)` with replacement 
+vsample(5, 10, replace = TRUE)
+#>  [1] 5 5 5 5 5 5 5 5 5 5
+```
+
 ## Tidygraph
 
 **quick\_forestfire** - wrapper around `tidygraph::play_forestfire`
@@ -99,7 +118,7 @@ except that it will return a tidygraph object with the node attribute
 ``` r
 forest_gr <- quick_forestfire(10)
 forest_gr
-#> # A tbl_graph: 10 nodes and 19 edges
+#> # A tbl_graph: 10 nodes and 34 edges
 #> #
 #> # An undirected simple graph with 1 component
 #> #
@@ -114,13 +133,13 @@ forest_gr
 #> 6 F    
 #> # … with 4 more rows
 #> #
-#> # Edge Data: 19 x 2
+#> # Edge Data: 34 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
-#> 2     1     3
-#> 3     2     3
-#> # … with 16 more rows
+#> 2     2     3
+#> 3     3     4
+#> # … with 31 more rows
 my_plot_fxn(forest_gr) +
     labs(title = "Example of a quick Forest Fire graph model")
 ```
@@ -176,7 +195,7 @@ objects.
 gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
 gr <- recursive_graph_join(gr_list)
 gr
-#> # A tbl_graph: 15 nodes and 85 edges
+#> # A tbl_graph: 15 nodes and 128 edges
 #> #
 #> # A directed acyclic multigraph with 1 component
 #> #
@@ -191,13 +210,13 @@ gr
 #> 6 F    
 #> # … with 9 more rows
 #> #
-#> # Edge Data: 85 x 2
+#> # Edge Data: 128 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
-#> 3     2     4
-#> # … with 82 more rows
+#> 3     1     3
+#> # … with 125 more rows
 my_plot_fxn(gr) +
     labs(title = "Example of joining 3 forest fire graphs")
 ```
@@ -227,7 +246,7 @@ gr_large <- quick_forestfire(10, name = LETTERS)
 gr_small <- quick_forestfire(5, name = letters)
 gr <- tidygraph::bind_graphs(gr_large, gr_small)
 gr
-#> # A tbl_graph: 15 nodes and 20 edges
+#> # A tbl_graph: 15 nodes and 33 edges
 #> #
 #> # A directed acyclic simple graph with 2 components
 #> #
@@ -242,15 +261,15 @@ gr
 #> 6 F    
 #> # … with 9 more rows
 #> #
-#> # Edge Data: 20 x 2
+#> # Edge Data: 33 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
 #> 3     3     4
-#> # … with 17 more rows
+#> # … with 30 more rows
 get_giant_component(gr)
-#> # A tbl_graph: 10 nodes and 10 edges
+#> # A tbl_graph: 10 nodes and 28 edges
 #> #
 #> # A directed acyclic simple graph with 1 component
 #> #
@@ -265,15 +284,15 @@ get_giant_component(gr)
 #> 6 F    
 #> # … with 4 more rows
 #> #
-#> # Edge Data: 10 x 2
+#> # Edge Data: 28 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
 #> 3     3     4
-#> # … with 7 more rows
+#> # … with 25 more rows
 rm_giant_component(gr)
-#> # A tbl_graph: 5 nodes and 10 edges
+#> # A tbl_graph: 5 nodes and 5 edges
 #> #
 #> # A directed acyclic simple graph with 1 component
 #> #
@@ -286,13 +305,13 @@ rm_giant_component(gr)
 #> 4 d    
 #> 5 e    
 #> #
-#> # Edge Data: 10 x 2
+#> # Edge Data: 5 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     1     3
-#> 3     2     3
-#> # … with 7 more rows
+#> 3     2     4
+#> # … with 2 more rows
 ```
 
 **get\_node\_index** - returns the indices of the nodes that pass the

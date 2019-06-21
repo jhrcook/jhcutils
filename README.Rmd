@@ -78,6 +78,20 @@ str(mtcars$gear)
 mtcars %>% u_pull(gear)
 ```
 
+**vsample** - a safe wrapper for `base::sample()` that always assumes you are passing a vector.
+
+```{r vsample}
+# samples from 1:10
+sample(10)
+# just returns 10
+vsample(10)
+
+# samples from 1:5 with replacement
+sample(5, 10, replace = TRUE)
+# samples from `c(5)` with replacement 
+vsample(5, 10, replace = TRUE)
+```
+
 
 ## Tidygraph
 

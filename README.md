@@ -29,6 +29,7 @@ devtools::install_github("jhrcook/jhcutils")
 ``` r
 library(jhcutils)
 library(datasets)
+library(tidygraph)
 library(dplyr)
 set.seed(0)
 ```
@@ -313,6 +314,56 @@ rm_giant_component(gr)
 #> 3     2     4
 #> # … with 2 more rows
 ```
+
+**num\_qual\_neighbors** - to be used with `tidygraph::map_local_int()`
+to count the number of neighbors that satisfy a logical expression that
+is applied to the node attributes of the neighborhood.
+
+``` r
+gr <- quick_barabasi(30)
+gr
+#> # A tbl_graph: 30 nodes and 29 edges
+#> #
+#> # An undirected simple graph with 1 component
+#> #
+#> # Node Data: 30 x 1 (active)
+#>   name 
+#>   <chr>
+#> 1 AB   
+#> 2 AC   
+#> 3 AD   
+#> 4 AE   
+#> 5 AF   
+#> 6 AG   
+#> # … with 24 more rows
+#> #
+#> # Edge Data: 29 x 2
+#>    from    to
+#>   <int> <int>
+#> 1     1     2
+#> 2     1     3
+#> 3     1     4
+#> # … with 26 more rows
+my_plot_fxn(gr)
+```
+
+<img src="man/figures/README-num_qual_neighbors-1.png" width="100%" />
+
+``` r
+
+# number of neighbors with a "B" in their name
+B_gr <- gr %>%
+   mutate(name_with_B = map_local_int(
+       .f = num_qual_neighbors,
+       lgl_filter = rlang::expr(stringr::str_detect(name, "B"))
+   ))
+
+B_gr %N>%
+   filter(name_with_B > 0) %>%
+   my_plot_fxn()
+```
+
+<img src="man/figures/README-num_qual_neighbors-2.png" width="100%" />
 
 **get\_node\_index** - returns the indices of the nodes that pass the
 expression evaluted in ’dplyr::filter()\`.

@@ -39,11 +39,12 @@ reference:
   - '`unique_na`'
   - '`u_pull`'
 
-- title: or 'tidygraph'
+- title: for 'tidygraph'
   contents:
   - '`filter_component_size`'
   - '`get_giant_component`'
   - '`recursive_graph_join`'
+  - '`num_qual_neighbors`'
   - '`get_node_index`'
   - '`quick_forestfire`'
   - '`quick_barabasi`'

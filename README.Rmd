@@ -35,6 +35,7 @@ devtools::install_github("jhrcook/jhcutils")
 ```{r load_libraries, warning = FALSE, message = FALSE}
 library(jhcutils)
 library(datasets)
+library(tidygraph)
 library(dplyr)
 set.seed(0)
 ```
@@ -107,7 +108,6 @@ my_plot_fxn <- function(gr) {
 }
 ```
 
-
 **quick_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
 
 ```{r forestfire}
@@ -162,6 +162,26 @@ gr
 get_giant_component(gr)
 rm_giant_component(gr)
 ```
+
+**num_qual_neighbors** - to be used with `tidygraph::map_local_int()` to count the number of neighbors that satisfy a logical expression that is applied to the node attributes of the neighborhood. 
+
+```{r num_qual_neighbors}
+gr <- quick_barabasi(30)
+gr
+my_plot_fxn(gr)
+
+# number of neighbors with a "B" in their name
+B_gr <- gr %>%
+   mutate(name_with_B = map_local_int(
+       .f = num_qual_neighbors,
+       lgl_filter = rlang::expr(stringr::str_detect(name, "B"))
+   ))
+
+B_gr %N>%
+   filter(name_with_B > 0) %>%
+   my_plot_fxn()
+```
+
 
 **get_node_index** - returns the indices of the nodes that pass the expression evaluted in 'dplyr::filter()`.
 

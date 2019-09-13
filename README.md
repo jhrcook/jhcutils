@@ -12,6 +12,13 @@ status](https://ci.appveyor.com/api/projects/status/github/jhrcook/jhcutils?bran
 [![Coverage
 status](https://codecov.io/gh/jhrcook/jhcutils/branch/master/graph/badge.svg)](https://codecov.io/github/jhrcook/jhcutils?branch=master)
 
+[![jhc
+github](https://img.shields.io/badge/GitHub-jhrcook-lightgrey.svg?style=flat&logo=github)](https://github.com/jhrcook)
+[![jhc
+twitter](https://img.shields.io/badge/Twitter-JoshDoesaThing-00aced.svg?style=flat&logo=twitter)](https://twitter.com/JoshDoesa)
+[![jhc
+website](https://img.shields.io/badge/Website-Joshua_Cook-5087B2.svg?style=flat&logo=telegram)](https://joshuacook.netlify.com)
+
 These are a bunch of functions that I find myself declaring and
 rewriting in a many scripts and analyses.
 
@@ -34,24 +41,18 @@ library(dplyr)
 set.seed(0)
 ```
 
+### Additions
+
+If you have any recommended additions, please open an
+[issue](https://github.com/jhrcook/jhcutils/issues).
+
 -----
 
 ## General Utilities
 
-**n\_unique** - return the number of unique values in a vector.
+`n_unique` - return the number of unique values in a vector.
 
-``` r
-a <- c(1, 2, 2, 3, 4, 5)
-n_unique(a)
-#> [1] 5
-b <- list(c(1, 2, 3, 4), c(1, 2, 3, 4, 5))
-n_unique(b)
-#> [1] 2
-n_unique(b, to_unlist = TRUE)
-#> [1] 5
-```
-
-**unique\_na** - return the unique values in a vector, omitting `NA`.
+`unique_na` - return the unique values in a vector, omitting `NA`.
 
 ``` r
 a <- c(1, 2, 3, NA, 3)
@@ -68,19 +69,19 @@ unique_na(b, to_unlist = TRUE)
 #> [1] 1 2 3 5
 ```
 
-**minmax** - set limits on a vector of numeric values.
+`minmax` - set limits on a vector of numeric values.
 
 ``` r
 c <- sample(-100:100, 20)
 c
-#>  [1]  80 -47 -26  13  78 -61  75  83  27  20 -89  95 -67  29 -29  43  -8
-#> [18]  32  81 -31
+#>  [1]  41 -33  66  28  61 -58 -87  86 -50 -16 -80   5  81 -27 -94 -28 -22
+#> [18] -64   4   9
 minmax(c, -10, 10)
-#>  [1]  10 -10 -10  10  10 -10  10  10  10  10 -10  10 -10  10 -10  10  -8
-#> [18]  10  10 -10
+#>  [1]  10 -10  10  10  10 -10 -10  10 -10 -10 -10   5  10 -10 -10 -10 -10
+#> [18] -10   4   9
 ```
 
-**u\_pull** - works just like `dplyr::pull()` except only returns unique
+`u_pull` - works just like `dplyr::pull()` except only returns unique
 values. There are also options to return the values sorted and without
 `NA` using the paramters `sorted` and `na.rm`, respectively.
 
@@ -91,35 +92,39 @@ mtcars %>% u_pull(gear)
 #> [1] 4 3 5
 ```
 
-**vsample** - a safe wrapper for `base::sample()` that always assumes
-you are passing a vector.
+`vsample` - a safe wrapper for `base::sample()` that always assumes you
+are passing a vector.
 
 ``` r
 # samples from 1:10
 sample(10)
-#>  [1]  8  9  2  5  1 10  7  6  3  4
+#>  [1]  5 10  2  8  6  1  4  3  9  7
 # just returns 10
 vsample(10)
 #> [1] 10
 
 # samples from 1:5 with replacement
 sample(5, 10, replace = TRUE)
-#>  [1] 2 3 3 3 1 5 4 4 1 4
+#>  [1] 3 2 2 4 4 4 2 4 1 1
 # samples from `c(5)` with replacement 
 vsample(5, 10, replace = TRUE)
 #>  [1] 5 5 5 5 5 5 5 5 5 5
 ```
 
+`str_replace_us` and `str_replace_sp` - replace underscores with spaces,
+or *vice vera*.
+
 ## Tidygraph
 
-**quick\_forestfire** - wrapper around `tidygraph::play_forestfire`
+`quick_forestfire` and `quick_barabasi`- wrapper around
+`tidygraph::play_forestfire` and `tidygraph::play_barabasi_albert`
 except that it will return a tidygraph object with the node attribute
 `"name"`.
 
 ``` r
 forest_gr <- quick_forestfire(10)
 forest_gr
-#> # A tbl_graph: 10 nodes and 34 edges
+#> # A tbl_graph: 10 nodes and 31 edges
 #> #
 #> # An undirected simple graph with 1 component
 #> #
@@ -134,24 +139,21 @@ forest_gr
 #> 6 F    
 #> # … with 4 more rows
 #> #
-#> # Edge Data: 34 x 2
+#> # Edge Data: 31 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
-#> 3     3     4
-#> # … with 31 more rows
+#> 3     1     3
+#> # … with 28 more rows
 my_plot_fxn(forest_gr) +
     labs(title = "Example of a quick Forest Fire graph model")
 ```
 
 <img src="man/figures/README-forestfire-1.png" width="100%" />
 
-**quick\_barabasi** - wrapper around `tidygraph::play_barabasi_albert`
-except that it will return a tidygraph object with the node attribute
-`"name"`.
-
 ``` r
+
 barabasi_gr <- quick_barabasi(10)
 barabasi_gr
 #> # A tbl_graph: 10 nodes and 9 edges
@@ -174,29 +176,23 @@ barabasi_gr
 #>   <int> <int>
 #> 1     1     2
 #> 2     1     3
-#> 3     3     4
+#> 3     2     4
 #> # … with 6 more rows
 my_plot_fxn(barabasi_gr) +
     labs(title = "Example of a quick Barabasi-Albert graph")
 ```
 
-<img src="man/figures/README-barbasi-1.png" width="100%" />
+<img src="man/figures/README-forestfire-2.png" width="100%" />
 
-**quick\_graph** - randomly selects one of the above random graphs.
+`quick_graph` - randomly selects one of the above random graphs.
 
-``` r
-quick_gr <- quick_graph(10)
-#> using barabasi_albert
-```
-
-**recursive\_graph\_join** - recursively join a list of tidygraph
-objects.
+`recursive_graph_join` - recursively join a list of tidygraph objects.
 
 ``` r
 gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
 gr <- recursive_graph_join(gr_list)
 gr
-#> # A tbl_graph: 15 nodes and 128 edges
+#> # A tbl_graph: 15 nodes and 93 edges
 #> #
 #> # A directed acyclic multigraph with 1 component
 #> #
@@ -211,21 +207,21 @@ gr
 #> 6 F    
 #> # … with 9 more rows
 #> #
-#> # Edge Data: 128 x 2
+#> # Edge Data: 93 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
-#> 2     2     3
-#> 3     1     3
-#> # … with 125 more rows
+#> 2     1     3
+#> 3     2     3
+#> # … with 90 more rows
 my_plot_fxn(gr) +
     labs(title = "Example of joining 3 forest fire graphs")
 ```
 
 <img src="man/figures/README-recursivegraphjoin-1.png" width="100%" />
 
-**filter\_component\_size** - filter the components of a tidygraph
-object by their individual number of nodes (order).
+`filter_component_size` - filter the components of a tidygraph object by
+their individual number of nodes (order).
 
 ``` r
 gr <- tidygraph::bind_graphs(quick_forestfire(4, name = LETTERS),
@@ -233,21 +229,24 @@ gr <- tidygraph::bind_graphs(quick_forestfire(4, name = LETTERS),
 igraph::count_components(gr)
 #> [1] 2
 igraph::count_components(filter_component_size(gr, min_size = 5))
+#> Warning: `as_quosure()` requires an explicit environment as of rlang 0.3.0.
+#> Please supply `env`.
+#> This warning is displayed once per session.
 #> [1] 1
 igraph::count_components(filter_component_size(gr, max_size = 5))
 #> [1] 1
 ```
 
-**get/rm\_giant\_component** - either return only or everything except
-the giant component of a graph (i.e. the component with the most number
-of nodes).
+`get/rm_giant_component` - either return only or everything except the
+giant component of a graph (i.e. the component with the most number of
+nodes).
 
 ``` r
 gr_large <- quick_forestfire(10, name = LETTERS)
 gr_small <- quick_forestfire(5, name = letters)
 gr <- tidygraph::bind_graphs(gr_large, gr_small)
 gr
-#> # A tbl_graph: 15 nodes and 33 edges
+#> # A tbl_graph: 15 nodes and 28 edges
 #> #
 #> # A directed acyclic simple graph with 2 components
 #> #
@@ -262,15 +261,15 @@ gr
 #> 6 F    
 #> # … with 9 more rows
 #> #
-#> # Edge Data: 33 x 2
+#> # Edge Data: 28 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
-#> 3     3     4
-#> # … with 30 more rows
+#> 3     1     3
+#> # … with 25 more rows
 get_giant_component(gr)
-#> # A tbl_graph: 10 nodes and 28 edges
+#> # A tbl_graph: 10 nodes and 19 edges
 #> #
 #> # A directed acyclic simple graph with 1 component
 #> #
@@ -285,15 +284,15 @@ get_giant_component(gr)
 #> 6 F    
 #> # … with 4 more rows
 #> #
-#> # Edge Data: 28 x 2
+#> # Edge Data: 19 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     2     3
-#> 3     3     4
-#> # … with 25 more rows
+#> 3     1     3
+#> # … with 16 more rows
 rm_giant_component(gr)
-#> # A tbl_graph: 5 nodes and 5 edges
+#> # A tbl_graph: 5 nodes and 9 edges
 #> #
 #> # A directed acyclic simple graph with 1 component
 #> #
@@ -306,18 +305,18 @@ rm_giant_component(gr)
 #> 4 d    
 #> 5 e    
 #> #
-#> # Edge Data: 5 x 2
+#> # Edge Data: 9 x 2
 #>    from    to
 #>   <int> <int>
 #> 1     1     2
 #> 2     1     3
-#> 3     2     4
-#> # … with 2 more rows
+#> 3     2     3
+#> # … with 6 more rows
 ```
 
-**num\_qual\_neighbors** - to be used with `tidygraph::map_local_int()`
-to count the number of neighbors that satisfy a logical expression that
-is applied to the node attributes of the neighborhood.
+`num_qual_neighbors` - to be used with `tidygraph::map_local_int()` to
+count the number of neighbors that satisfy a logical expression that is
+applied to the node attributes of the neighborhood.
 
 ``` r
 gr <- quick_barabasi(30)
@@ -342,7 +341,7 @@ gr
 #>   <int> <int>
 #> 1     1     2
 #> 2     1     3
-#> 3     1     4
+#> 3     2     4
 #> # … with 26 more rows
 my_plot_fxn(gr)
 ```
@@ -365,7 +364,7 @@ B_gr %N>%
 
 <img src="man/figures/README-num_qual_neighbors-2.png" width="100%" />
 
-**get\_node\_index** - returns the indices of the nodes that pass the
+`get_node_index` - returns the indices of the nodes that pass the
 expression evaluted in ’dplyr::filter()\`.
 
 ``` r
@@ -381,7 +380,7 @@ get_node_index(quick_barabasi(10), stringr::str_detect(name, "A|B|C"))
 
 ## Pacakge Utilities
 
-**document\_df** - prints the framework for documenting a data frame
+`document_df` - prints the framework for documenting a data frame
 object.
 
 ``` r
@@ -405,19 +404,3 @@ document_df(dat)
 #> #'     \item{z}{}
 #> #' }
 ```
-
------
-
-### Additions
-
-If you have any recommended additions, please open an
-[issue](https://github.com/jhrcook/jhcutils/issues).
-
------
-
-[![jhc
-github](https://img.shields.io/badge/GitHub-jhrcook-lightgrey.svg?style=flat&logo=github)](https://github.com/jhrcook)
-[![jhc
-twitter](https://img.shields.io/badge/Twitter-JoshDoesaThing-00aced.svg?style=flat&logo=twitter)](https://twitter.com/JoshDoesa)
-[![jhc
-website](https://img.shields.io/badge/Website-JoshDoesaThing-5087B2.svg?style=flat&logo=telegram)](https://www.joshdoesathing.com)

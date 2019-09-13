@@ -38,6 +38,8 @@ reference:
   - '`tidy_colnames`'
   - '`unique_na`'
   - '`u_pull`'
+  - '`str_replace_us`'
+  - '`str_replace_sp`'
 
 - title: for 'tidygraph'
   contents:

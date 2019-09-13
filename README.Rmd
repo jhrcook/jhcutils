@@ -11,7 +11,6 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-
 ```
 # jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/figures/logo.png" align="right" alt="" width="120" /> </a>
 
@@ -19,6 +18,11 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.org/jhrcook/jhcutils.svg?branch=master)](https://travis-ci.org/jhrcook/jhcutils)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/jhrcook/jhcutils?branch=master&svg=true)](https://ci.appveyor.com/project/jhrcook/jhcutils)
 [![Coverage status](https://codecov.io/gh/jhrcook/jhcutils/branch/master/graph/badge.svg)](https://codecov.io/github/jhrcook/jhcutils?branch=master)
+
+[![jhc github](https://img.shields.io/badge/GitHub-jhrcook-lightgrey.svg?style=flat&logo=github)](https://github.com/jhrcook)
+[![jhc twitter](https://img.shields.io/badge/Twitter-JoshDoesaThing-00aced.svg?style=flat&logo=twitter)](https://twitter.com/JoshDoesa)
+[![jhc website](https://img.shields.io/badge/Website-Joshua_Cook-5087B2.svg?style=flat&logo=telegram)](https://joshuacook.netlify.com)
+
 
 These are a bunch of functions that I find myself declaring and rewriting in a many scripts and analyses.
 
@@ -40,21 +44,18 @@ library(dplyr)
 set.seed(0)
 ```
 
+
+### Additions
+
+If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).
+
 ---
 
 ## General Utilities
 
-**n_unique** - return the number of unique values in a vector.
+`n_unique` - return the number of unique values in a vector.
 
-```{r nunique}
-a <- c(1, 2, 2, 3, 4, 5)
-n_unique(a)
-b <- list(c(1, 2, 3, 4), c(1, 2, 3, 4, 5))
-n_unique(b)
-n_unique(b, to_unlist = TRUE)
-```
-
-**unique_na** - return the unique values in a vector, omitting `NA`.
+`unique_na` - return the unique values in a vector, omitting `NA`.
 
 ```{r uniquena}
 a <- c(1, 2, 3, NA, 3)
@@ -64,7 +65,7 @@ unique_na(b)
 unique_na(b, to_unlist = TRUE)
 ```
 
-**minmax** - set limits on a vector of numeric values.
+`minmax` - set limits on a vector of numeric values.
 
 ```{r minmax}
 c <- sample(-100:100, 20)
@@ -72,14 +73,14 @@ c
 minmax(c, -10, 10)
 ```
 
-**u_pull** - works just like `dplyr::pull()` except only returns unique values. There are also options to return the values sorted and without `NA` using the paramters `sorted` and `na.rm`, respectively.
+`u_pull` - works just like `dplyr::pull()` except only returns unique values. There are also options to return the values sorted and without `NA` using the paramters `sorted` and `na.rm`, respectively.
 
 ```{r upull}
 str(mtcars$gear)
 mtcars %>% u_pull(gear)
 ```
 
-**vsample** - a safe wrapper for `base::sample()` that always assumes you are passing a vector.
+`vsample` - a safe wrapper for `base::sample()` that always assumes you are passing a vector.
 
 ```{r vsample}
 # samples from 1:10
@@ -92,6 +93,8 @@ sample(5, 10, replace = TRUE)
 # samples from `c(5)` with replacement 
 vsample(5, 10, replace = TRUE)
 ```
+
+`str_replace_us` and `str_replace_sp` - replace underscores with spaces, or *vice vera*.
 
 
 ## Tidygraph
@@ -108,31 +111,23 @@ my_plot_fxn <- function(gr) {
 }
 ```
 
-**quick_forestfire** - wrapper around `tidygraph::play_forestfire` except that it will return a tidygraph object with the node attribute `"name"`.
+`quick_forestfire` and `quick_barabasi`- wrapper around `tidygraph::play_forestfire` and `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
 
 ```{r forestfire}
 forest_gr <- quick_forestfire(10)
 forest_gr
 my_plot_fxn(forest_gr) +
     labs(title = "Example of a quick Forest Fire graph model")
-```
 
-**quick_barabasi** - wrapper around `tidygraph::play_barabasi_albert` except that it will return a tidygraph object with the node attribute `"name"`.
-
-```{r barbasi}
 barabasi_gr <- quick_barabasi(10)
 barabasi_gr
 my_plot_fxn(barabasi_gr) +
     labs(title = "Example of a quick Barabasi-Albert graph")
 ```
 
-**quick_graph** - randomly selects one of the above random graphs.
+`quick_graph` - randomly selects one of the above random graphs.
 
-```{r quickgraph}
-quick_gr <- quick_graph(10)
-```
-
-**recursive_graph_join** - recursively join a list of tidygraph objects.
+`recursive_graph_join` - recursively join a list of tidygraph objects.
 
 ```{r recursivegraphjoin}
 gr_list <- purrr::map(c(5, 10, 15), quick_forestfire)
@@ -142,7 +137,7 @@ my_plot_fxn(gr) +
     labs(title = "Example of joining 3 forest fire graphs")
 ```
 
-**filter_component_size** - filter the components of a tidygraph object by their individual number of nodes (order).
+`filter_component_size` - filter the components of a tidygraph object by their individual number of nodes (order).
 
 ```{r filtercompsize}
 gr <- tidygraph::bind_graphs(quick_forestfire(4, name = LETTERS),
@@ -152,7 +147,7 @@ igraph::count_components(filter_component_size(gr, min_size = 5))
 igraph::count_components(filter_component_size(gr, max_size = 5))
 ```
 
-**get/rm_giant_component** - either return only or everything except the giant component of a graph (i.e. the component with the most number of nodes).
+`get/rm_giant_component` - either return only or everything except the giant component of a graph (i.e. the component with the most number of nodes).
 
 ```{r}
 gr_large <- quick_forestfire(10, name = LETTERS)
@@ -163,7 +158,7 @@ get_giant_component(gr)
 rm_giant_component(gr)
 ```
 
-**num_qual_neighbors** - to be used with `tidygraph::map_local_int()` to count the number of neighbors that satisfy a logical expression that is applied to the node attributes of the neighborhood. 
+`num_qual_neighbors` - to be used with `tidygraph::map_local_int()` to count the number of neighbors that satisfy a logical expression that is applied to the node attributes of the neighborhood. 
 
 ```{r num_qual_neighbors}
 gr <- quick_barabasi(30)
@@ -183,7 +178,7 @@ B_gr %N>%
 ```
 
 
-**get_node_index** - returns the indices of the nodes that pass the expression evaluted in 'dplyr::filter()`.
+`get_node_index` - returns the indices of the nodes that pass the expression evaluted in 'dplyr::filter()`.
 
 ```{r}
 # simple equalities
@@ -196,7 +191,7 @@ get_node_index(quick_barabasi(10), stringr::str_detect(name, "A|B|C"))
 
 ## Pacakge Utilities
 
-**document_df** - prints the framework for documenting a data frame object.
+`document_df` - prints the framework for documenting a data frame object.
 
 ```{r documentdf}
 dat <- tibble::tibble(x = c(LETTERS[1:5]),
@@ -205,16 +200,3 @@ dat <- tibble::tibble(x = c(LETTERS[1:5]),
 dat
 document_df(dat)
 ```
-
----
-
-### Additions
-
-If you have any recommended additions, please open an [issue](https://github.com/jhrcook/jhcutils/issues).
-
----
-
-[![jhc github](https://img.shields.io/badge/GitHub-jhrcook-lightgrey.svg?style=flat&logo=github)](https://github.com/jhrcook)
-[![jhc twitter](https://img.shields.io/badge/Twitter-JoshDoesaThing-00aced.svg?style=flat&logo=twitter)](https://twitter.com/JoshDoesa)
-[![jhc website](https://img.shields.io/badge/Website-JoshDoesaThing-5087B2.svg?style=flat&logo=telegram)](https://www.joshdoesathing.com)
-

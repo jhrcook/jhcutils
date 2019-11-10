@@ -27,4 +27,5 @@ Imports:
     data.table,
     tibble,
     stringr,
-    tidyselect
+    tidyselect,
+    ggplot2 (>= 3.2.0)

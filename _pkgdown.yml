@@ -41,6 +41,10 @@ reference:
   - '`str_replace_us`'
   - '`str_replace_sp`'
 
+- title: styling
+  contents:
+  - '`show_palette`'
+
 - title: for 'tidygraph'
   contents:
   - '`filter_component_size`'

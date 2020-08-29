@@ -6,6 +6,8 @@ jhcutils <a href="https://jhrcook.github.io/jhcutils/index.html"> <img src="man/
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![R build
+status](https://github.com/jhrcook/jhcutils/workflows/R-CMD-check/badge.svg)](https://github.com/jhrcook/jhcutils/actions)
 [![Travis build
 status](https://travis-ci.org/jhrcook/jhcutils.svg?branch=master)](https://travis-ci.org/jhrcook/jhcutils)
 [![AppVeyor build
